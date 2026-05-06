@@ -1,0 +1,5 @@
+.env
+pgdata
+moodledata
+moodlecode
+node_modules
