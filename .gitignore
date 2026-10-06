@@ -3,3 +3,4 @@ pgdata
 moodledata
 moodlecode
 node_modules
+moodle/config.php
