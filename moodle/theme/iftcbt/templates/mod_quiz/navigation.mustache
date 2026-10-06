@@ -1,0 +1,22 @@
+{{!
+    @template mod_quiz/navigation
+
+    Optimized mobile-first touch-friendly navigation buttons for IFTCBT.
+}}
+<div class="submitbtns mt-4 pt-3 border-top">
+    <div class="d-flex justify-content-between align-items-center w-100 unique-cbt-nav">
+        
+        <div class="prev-btn-wrapper">
+            {{#previous}}
+                <input type="submit" name="next" value="{{#str}}previous, mod_quiz{{/str}}" class="btn btn-outline-secondary btn-lg px-4 py-2" id="mod_quiz_nav_prev" />
+            {{/previous}}
+        </div>
+
+        <div class="next-btn-wrapper">
+            {{#next}}
+                <input type="submit" name="next" value="{{#str}}next, mod_quiz{{/str}}" class="btn btn-primary btn-lg px-5 py-2 font-weight-bold shadow-sm" id="mod_quiz_nav_next" />
+            {{/next}}
+        </div>
+
+    </div>
+</div>

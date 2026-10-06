@@ -1,0 +1,40 @@
+{{!
+    @template theme_iftcbt/secure_exam
+    IFTCBT highly secure, mobile-optimized exam layout.
+}}
+<!DOCTYPE html>
+<html {{{ output.htmlattributes }}}>
+<head>
+    <title>{{# output }}{{ page_title }}{{/ output }}</title>
+    {{{ output.favicon }}}
+    {{{ output.standard_head_html }}}
+</head>
+<body {{{ bodyattributes }}}>
+{{{ output.standard_top_of_body_html }}}
+
+<div id="iftcbt-wrapper">
+
+    <header id="iftcbt-header">
+        <div id="iftcbt-header-left">
+            <div id="iftcbt-brand">IFT Dept. CBT System</div>
+            <div id="iftcbt-subtext">IFT 510 Quiz &middot; 2024/25 session</div>
+        </div>
+        <div id="iftcbt-timer-region">
+            {{! Timer injected here by JS }}
+        </div>
+    </header>
+
+    <main id="iftcbt-main">
+        <div id="user-notifications">
+            {{{ output.notifications }}}
+        </div>
+        <div id="iftcbt-content-card">
+            {{{ output.main_content }}}
+        </div>
+    </main>
+
+</div>
+
+{{{ output.standard_end_of_body_html }}}
+</body>
+</html>

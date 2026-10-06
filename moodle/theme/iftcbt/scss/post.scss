@@ -1,0 +1,502 @@
+/**
+ * IFTCBT Custom Mobile-First Exam Styles
+ * Complete fix — Timer, Back button, Sidebar, Mobile, Login
+ */
+
+// ============================================
+// 1. GLOBAL BASE
+// ============================================
+body {
+    background-color: #f5f6fa !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+#iftcbt-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// ============================================
+// 2. HEADER
+// ============================================
+#iftcbt-header {
+    background-color: #1a3c6e;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#iftcbt-brand {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+#iftcbt-subtext {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+// ============================================
+// 3. TIMER — Force visible in header
+// ============================================
+#iftcbt-timer-region {
+    display: flex;
+    align-items: center;
+}
+
+// Moodle quiz timer wrapper
+#quiz-timer-wrapper {
+    display: flex !important;
+    position: relative !important;
+    top: auto !important;
+    z-index: auto !important;
+    justify-content: flex-end !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#quiz-timer {
+    background-color: #e8392a !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    min-width: 70px !important;
+    text-align: center !important;
+
+    // Override all timeleft color classes to keep red
+    &[class*="timeleft"] {
+        background-color: #e8392a !important;
+        color: #ffffff !important;
+    }
+}
+
+// Also target alternate timer selectors
+.quitimer, .quiztimer {
+    background-color: #e8392a !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+// ============================================
+// 4. HIDE BACK BUTTON
+// ============================================
+.mod_quiz-next-nav[accesskey="p"],
+button.mod_quiz-prev-nav,
+a[accesskey="p"],
+.othernav {
+    display: none !important;
+}
+
+// Hide the standalone back button
+#page-mod-quiz-attempt .container-fluid > .row > a,
+.btn.btn-secondary:first-child,
+a.btn[href*="view.php"] {
+    display: none !important;
+}
+
+// ============================================
+// 5. HIDE STUDENT-FACING ADMIN ELEMENTS
+// ============================================
+// Hide Edit question, v3 latest, Flag question for students
+// These only show for teachers/admins so CSS alone handles it
+.que a[href*="editquestion"],
+.que .badge.badge-info,
+.que .versionnumber {
+    display: none !important;
+}
+
+// Hide the left info column completely for cleaner look
+// Only the question content should show
+.que .info {
+    display: none !important;
+}
+
+// ============================================
+// 6. MAIN CONTENT AREA
+// ============================================
+#iftcbt-main {
+    padding: 12px;
+    flex: 1;
+}
+
+#iftcbt-content-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #d8deef;
+    overflow: hidden;
+    padding: 16px;
+}
+
+// ============================================
+// 7. QUESTION TEXT
+// ============================================
+.que .qtext {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.6 !important;
+    color: #1a1a2e !important;
+    margin-bottom: 16px !important;
+}
+
+.que h3, .que .no {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #1a3c6e !important;
+    margin-bottom: 8px !important;
+}
+
+// ============================================
+// 8. ANSWER OPTIONS
+// ============================================
+.que .answer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.que .answer div.r0,
+.que .answer div.r1 {
+    padding: 12px 14px !important;
+    border: 1.5px solid #d0d5e8 !important;
+    border-radius: 10px !important;
+    background-color: #ffffff !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f0f4fc !important;
+        border-color: #1a3c6e !important;
+    }
+
+    &.selected, &:has(input:checked) {
+        background-color: #e8eef8 !important;
+        border-color: #1a3c6e !important;
+        border-width: 2px !important;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        width: 18px !important;
+        height: 18px !important;
+        accent-color: #1a3c6e !important;
+        cursor: pointer !important;
+        flex-shrink: 0;
+    }
+
+    label {
+        font-size: 13px !important;
+        color: #2a2a3e !important;
+        cursor: pointer !important;
+        margin-bottom: 0 !important;
+        line-height: 1.4 !important;
+        flex: 1;
+    }
+}
+
+// ============================================
+// 9. QUESTION NAVIGATOR
+// ============================================
+.qnbutton {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 6px !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    border: 1px solid #d0d5e8 !important;
+    background: #ffffff !important;
+    color: #444 !important;
+    margin: 3px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+
+    &.answersaved {
+        background: #1a3c6e !important;
+        color: #ffffff !important;
+        border-color: #1a3c6e !important;
+    }
+
+    &.thispage {
+        background: #e8392a !important;
+        color: #ffffff !important;
+        border-color: #e8392a !important;
+    }
+
+    &.flagged {
+        background: #f5a623 !important;
+        color: #ffffff !important;
+        border-color: #f5a623 !important;
+    }
+
+    &.attemptednotfinished {
+        background: #d0d5e8 !important;
+        color: #444 !important;
+    }
+}
+
+.qnavwrapper, #mod_quiz_navblock {
+    background: #f5f6fa !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    border: 1px solid #e0e5f0 !important;
+    margin-top: 16px !important;
+
+    h3, .qnavheading {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        color: #1a3c6e !important;
+        margin-bottom: 8px !important;
+    }
+}
+
+// ============================================
+// 10. NAVIGATION BUTTONS
+// ============================================
+.mod_quiz-nav-panel, .submitbtns {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 16px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #e8edf5 !important;
+}
+
+input[name="previous"],
+button.mod_quiz-prev-nav {
+    flex: 1 !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    border: 1.5px solid #1a3c6e !important;
+    background: #ffffff !important;
+    color: #1a3c6e !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+input[name="next"],
+button.mod_quiz-next-nav {
+    flex: 2 !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    background: #1a3c6e !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+input[name="finishattempt"],
+button[name="finishattempt"],
+input.submit {
+    flex: 1 !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    background: #e8392a !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+// ============================================
+// 11. LEGEND
+// ============================================
+.qlegend {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 8px !important;
+    font-size: 10px !important;
+    color: #666 !important;
+
+    li {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        list-style: none !important;
+    }
+
+    .qlegend_img {
+        width: 12px !important;
+        height: 12px
+
+// ============================================
+// LOGIN PAGE
+// ============================================
+#iftcbt-login-page {
+    background: linear-gradient(135deg, #1a3c6e 0%, #0d2040 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#iftcbt-login-wrapper {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+#iftcbt-login-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.iftcbt-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+#iftcbt-login-title {
+    margin-bottom: 24px;
+
+    h1 {
+        color: #ffffff;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+
+    p {
+        color: rgba(255,255,255,0.8);
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .iftcbt-login-subtitle {
+        color: rgba(255,255,255,0.6);
+        font-size: 12px;
+    }
+}
+
+#iftcbt-login-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    text-align: left;
+
+    h2 {
+        color: #1a3c6e;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e8edf5;
+    }
+
+    // Input fields
+    .form-control {
+        border-radius: 8px !important;
+        border: 1.5px solid #d0d5e8 !important;
+        padding: 12px 14px !important;
+        font-size: 14px !important;
+        height: auto !important;
+        margin-bottom: 12px !important;
+
+        &:focus {
+            border-color: #1a3c6e !important;
+            box-shadow: 0 0 0 3px rgba(26,60,110,0.15) !important;
+        }
+    }
+
+    // Login button
+    #loginbtn {
+        background: #1a3c6e !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        width: 100% !important;
+        margin-top: 4px !important;
+        color: #ffffff !important;
+
+        &:hover {
+            background: #0d2040 !important;
+        }
+    }
+
+    // Hide guest access
+    #guestlogin {
+        display: none !important;
+    }
+
+    // Lost password
+    .forgetpass {
+        text-align: center;
+        margin-top: 16px;
+
+        a {
+            color: #1a3c6e !important;
+            font-size: 13px !important;
+        }
+    }
+
+    // Hide cookies notice
+    .cookienotice {
+        display: none !important;
+    }
+}
+
+#iftcbt-login-footer {
+    margin-top: 20px;
+
+    p {
+        color: rgba(255,255,255,0.5);
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+}
+
+// Mobile login
+@media (max-width: 576px) {
+    #iftcbt-login-card {
+        padding: 20px 16px;
+    }
+
+    #iftcbt-login-title h1 {
+        font-size: 18px;
+    }
+
+    .iftcbt-logo {
+        width: 60px;
+        height: 60px;
+    }
+}
+// ============================================
+// HIDE DOWNLOAD CONFIGURATION BUTTON
+// ============================================
+a.btn[href*="accessrule/seb/config.php"] {
+    display: none !important;
+}

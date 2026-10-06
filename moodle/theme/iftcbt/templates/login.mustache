@@ -1,0 +1,169 @@
+{{!
+    @template theme_iftcbt/login
+    IFTCBT Custom Login Page
+}}
+<!DOCTYPE html>
+<html {{{ output.htmlattributes }}}>
+<head>
+    <title>{{# output }}{{ page_title }}{{/ output }}</title>
+    {{{ output.favicon }}}
+    {{{ output.standard_head_html }}}
+    <style>
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            min-height: 100vh !important;
+            background: #f5f6fa !important;
+        }
+        #iftcbt-login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #f5f6fa;
+        }
+        #iftcbt-login-wrapper {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        #iftcbt-login-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        .iftcbt-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+        #iftcbt-login-title h1 {
+            color: #1a3c6e;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        #iftcbt-login-title p {
+            color: #555555;
+            font-size: 12px;
+            margin-bottom: 3px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        #iftcbt-login-title .subtitle {
+            color: #888888;
+            font-size: 11px;
+            margin-bottom: 0;
+        }
+        #iftcbt-login-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px 24px 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            margin-top: 20px;
+            text-align: left;
+        }
+        #iftcbt-login-card h2 {
+            color: #1a3c6e;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #e8edf5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        #iftcbt-login-card .form-control {
+            border-radius: 8px !important;
+            border: 1.5px solid #d0d5e8 !important;
+            padding: 11px 14px !important;
+            font-size: 14px !important;
+            height: auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin-bottom: 10px !important;
+        }
+        #iftcbt-login-card #loginbtn {
+            background: #1a3c6e !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            width: 100% !important;
+            color: #ffffff !important;
+            cursor: pointer !important;
+            margin-top: 6px !important;
+        }
+        #iftcbt-login-card #guestlogin,
+        #iftcbt-login-card .cookienotice,
+        #iftcbt-login-card #page-login-index-guestlogin {
+            display: none !important;
+        }
+        #iftcbt-login-card .forgetpass {
+            text-align: center;
+            margin-top: 14px;
+        }
+        #iftcbt-login-card .forgetpass a {
+            color: #1a3c6e !important;
+            font-size: 12px !important;
+        }
+        #iftcbt-login-footer {
+            margin-top: 16px;
+        }
+        #iftcbt-login-footer p {
+            color:  #aaaaaa);
+            font-size: 11px;
+            margin-bottom: 3px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        /* Hide Moodle's default navbar on login */
+        nav.navbar, #nav-drawer, .drawer {
+            display: none !important;
+        }
+        #page {
+            margin-top: 0 !important;
+        }
+        /* Hide guest access section */
+        #guestlogin, .guestlogin {
+            display: none !important;
+        }
+    </style>
+</head>
+<body {{{ bodyattributes }}}>
+{{{ output.standard_top_of_body_html }}}
+
+<div id="iftcbt-login-page">
+    <div id="iftcbt-login-wrapper">
+
+        <div id="iftcbt-login-logos">
+            <img src="/theme/iftcbt/pix/ift_logo.png" alt="FUTO Logo" class="iftcbt-logo" />
+            <img src="/theme/iftcbt/pix/dept_logo.png" alt="IFT Dept Logo" class="iftcbt-logo" />
+        </div>
+
+        <div id="iftcbt-login-title">
+            <h1>IFT Department CBT System</h1>
+            <p>Federal University of Technology, Owerri</p>
+            <p class="subtitle">2024/2025 Academic Session</p>
+        </div>
+
+        <div id="iftcbt-login-card">
+            <h2>Student / Staff Login</h2>
+            {{{ output.main_content }}}
+        </div>
+
+        <div id="iftcbt-login-footer">
+            <p>Department of Information Technology &bull; FUTO</p>
+            <p>Only authorized users may access this system</p>
+        </div>
+
+    </div>
+</div>
+
+{{{ output.standard_end_of_body_html }}}
+</body>
+</html>
